@@ -30,25 +30,30 @@ ale neřeš – obrázek se pomocí CSS natáhne nebo smrští tak, aby pokryl c
 
 Jako zdroj citátů můžeš použít soubor `src/main/resources/citaty.txt`, který je součástí staženého projektu.
 
+### Náhodná čísla
+
+Pro generování náhodných čísel v Javě slouží třída [Random](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Random.html).
+
 ### Načtení textového souboru z *resourců*
 
 Kód pro načtení řádků souboru v *resourcech* do seznamu řetězců (`List<String>`):
 
 ```java
 private static List<String> readAllLines(String resource)throws IOException{
-        //Soubory z resources se získávají pomocí classloaderu. Nejprve musíme získat aktuální classloader.
-        ClassLoader classLoader=Thread.currentThread().getContextClassLoader();
+    //Soubory z resources se získávají pomocí classloaderu. Nejprve musíme získat aktuální classloader.
+    ClassLoader classLoader=Thread.currentThread().getContextClassLoader();
 
-        //Pomocí metody getResourceAsStream() získáme z classloaderu InpuStream, který čte z příslušného souboru.
-        //Následně InputStream převedeme na BufferedRead, který čte text v kódování UTF-8 
-        try(InputStream inputStream=classLoader.getResourceAsStream(resource);
+    //Pomocí metody getResourceAsStream() získáme z classloaderu InpuStream, který čte z příslušného souboru.
+    //Následně InputStream převedeme na BufferedRead, který čte text v kódování UTF-8 
+    try(InputStream inputStream=classLoader.getResourceAsStream(resource);
         BufferedReader reader=new BufferedReader(new InputStreamReader(inputStream,StandardCharsets.UTF_8))){
-        //Metoda lines() vrací stream řádků ze souboru. Pomocí kolektoru převedeme Stream<String> na List<String>.
-        return reader
+
+    //Metoda lines() vrací stream řádků ze souboru. Pomocí kolektoru převedeme Stream<String> na List<String>.
+    return reader
         .lines()
         .collect(Collectors.toList());
-        }
-        }
+    }
+}
 
 // příklad volání: readAllLines("citaty.txt")
 ```
@@ -56,8 +61,9 @@ private static List<String> readAllLines(String resource)throws IOException{
 ### Vytvoření seznamu textových řetězců přímo ve zdrojovém kódu Javy
 
 Pokud chci vytvořit seznam několika textových řetězců a nechci je mít v externím souboru, můžu použít metodu `Arrays.asList()`:
+
 ```java
-List<String> seznamTextu = Arrays.asList("řetězec 1", "řetězec 2", "další řetězec", "ještě jiný řetězec");
+List<String> seznamTextu=Arrays.asList("řetězec 1","řetězec 2","další řetězec","ještě jiný řetězec");
 ```
 
 ### Obrázek na pozadí v inline stylu
@@ -73,15 +79,15 @@ Kaskádové styly (CSS) je možné psát i ve formě *inline stylů* – přísl
 ### Vložení HTML místo obyčejného textu přes Thymeleaf
 
 Když v Thymeleaf použiješ atribut `th:text`, vloží se obsah atributu do stránky jako obyčejný text. Tzn. pokud bude obsahovat nějaké HTML značky, zobrazí se
-tyto značky na stránce textově, např. `<div>`. Pokud chceš vložit text jako HTML, je potřeba použít `th:utext` (jako *unescaped text*). **Pozor, takto
-vložený kód se nijak nekontroluje. Je tedy potřeba takto vkládat pouze HTML kód, kterému důvěřuješ. V žádném případě takto nelze vkládat kód, který pochází od
+tyto značky na stránce textově, např. `<div>`. Pokud chceš vložit text jako HTML, je potřeba použít `th:utext` (jako *unescaped text*). **Pozor, takto vložený
+kód se nijak nekontroluje. Je tedy potřeba takto vkládat pouze HTML kód, kterému důvěřuješ. V žádném případě takto nelze vkládat kód, který pochází od
 uživatele. Uživatel by totiž mohl do kódu podstrčit třeba značku `<script>` a spustit v prohlížeči jakýkoli svůj kód.**
 
 ### Odkazy
 
 * odkaz na stránku [Lekce 2](https://java.czechitas.cz/2021-jaro/java-2/lekce-2.html)
-* Java SE 11 [Javadoc](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/) – dokumentace všech tříd, které jsou součástí základní Javy ve verzi 11.
+* Java SE 11 [Javadoc](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/) – dokumentace všech tříd, které jsou součástí základní Javy ve verzi 11.
 * Dokumentace [Spring Boot](https://spring.io/projects/spring-boot#learn) – odsud je anotace `@SpringBootApplication` a třída `SpringApplication`.
 * Dokumentace [Spring Framework](https://spring.io/projects/spring-framework#learn) – odsud jsou anotace `@Controller`, `@GetRequest` a třída `ModelAndView`.
-* Dokumentace [Thymeleaf](https://www.thymeleaf.org/doc/tutorials/3.0/usingthymeleaf.html) – šablonovací systém pro HTML použitý v projektu.
+* Dokumentace [Thymeleaf](https://www.thymeleaf.org/doc/tutorials/3.0/usingthymeleaf.html) – šablonovací systém pro HTML použitý v projektu.
 * [Unsplash](https://unsplash.com) – obrázky a fotografie k použití zdarma
