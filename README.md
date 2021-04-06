@@ -12,7 +12,7 @@ Cílem je vytvořit webovou stránku, která při každém načtení zobrazí n�
 1. Uprav stránku tak, aby byla dynamická – aby se při každém načtení text i obrázek náhodně měnil.
 1. Zkontroluj výsledek v prohlížeči.
 1. *Commitni* a *pushnni* změny (výsledný kód) do svého repository na GitHubu.
-1. Vlož odkaz na své repository do [tabulky s úkoly](https://docs.google.com/spreadsheets/d/15j4y2MhbcFhNLz2hAiRg8EaEUhuPFzRPmPgNliZdza0/edit#gid=1889473955)
+1. Vlož odkaz na své repository do tabulky s úkoly na Google Drive ()
 
 ## Mohlo by se hodit
 
