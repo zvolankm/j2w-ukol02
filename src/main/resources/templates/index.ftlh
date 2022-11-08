@@ -9,8 +9,8 @@
     <link rel="stylesheet" href="/css/style.css">
     <link rel="icon" type="image/png" href="/images/favicon.png">
 </head>
-<body style="background-image: url(static/images/obrazek-${obrazek}.png);">
+<body style="background-image: url(static/images/obrazek-${obrazek}.png),">
 
-    <blockquote><strong>Debugging</strong> /de·bugh·ing/ <em>verb</em><br/>The Classic Mystery Game where you are the detective, the victim, and the murderer.</blockquote>
+    <blockquote><strong>${citat}</strong></blockquote>
 </body>
 </html>
